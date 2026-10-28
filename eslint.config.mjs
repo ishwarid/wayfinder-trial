@@ -1,0 +1,19 @@
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const config = [
+  ...nextVitals,
+  ...nextTs,
+  {
+    ignores: [
+      ".next/**",
+      "node_modules/**",
+      "coverage/**",
+      "next-env.d.ts",
+      ".agents/**",
+      "evals/fixtures/**",
+    ],
+  },
+];
+
+export default config;

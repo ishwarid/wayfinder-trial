@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@import "@fontsource-variable/hanken-grotesk";
+@import "@fontsource-variable/jetbrains-mono";
+
+/*
+ * Wayfinder tokens: a cool survey-map palette. The route blue marks things
+ * you can follow (links, verified citations); amber marks things to check
+ * yourself (unverified citations).
+ */
+:root {
+  color-scheme: light;
+  --page: #eef1f4;
+  --surface: #ffffff;
+  --sunken: #f6f8fa;
+  --ink: #141922;
+  --ink-soft: #4a5361;
+  --ink-muted: #6d7685;
+  --line: #d8dde4;
+  --route: #2f5bd3;
+  --route-strong: #1e3f9e;
+  --route-soft: #e4ebfb;
+  --on-route: #ffffff;
+  --check-bg: #fbf1dc;
+  --check-line: #d9b25a;
+  --check-ink: #6b4600;
+  --ok: #1f7a4d;
+  --danger: #b4392b;
+  --mark: #fff3bf;
+  --shadow: 0 1px 2px rgb(20 25 34 / 0.06), 0 8px 24px -12px rgb(20 25 34 / 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0f1319;
+    --surface: #161b23;
+    --sunken: #12161d;
+    --ink: #e7ebf1;
+    --ink-soft: #aeb7c4;
+    --ink-muted: #828c9b;
+    --line: #29303b;
+    --route: #8fb0ff;
+    --route-strong: #b7cbff;
+    --route-soft: #1c2742;
+    --on-route: #0c1430;
+    --check-bg: #3a2d0f;
+    --check-line: #8a6a22;
+    --check-ink: #f2d38a;
+    --ok: #63c993;
+    --danger: #f29486;
+    --mark: #3d3510;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  }
+}
+
+@theme inline {
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-route: var(--route);
+  --color-route-strong: var(--route-strong);
+  --color-route-soft: var(--route-soft);
+  --color-on-route: var(--on-route);
+  --color-check-bg: var(--check-bg);
+  --color-check-line: var(--check-line);
+  --color-check-ink: var(--check-ink);
+  --color-ok: var(--ok);
+  --color-danger: var(--danger);
+  --color-mark: var(--mark);
+  --shadow-card: var(--shadow);
+}
+
+/* In a layer, so Tailwind utilities (in @layer utilities) can override it. */
+@layer base {
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--route);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes pulse-dot {
+  50% {
+    opacity: 0.3;
+  }
+}
+.working-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

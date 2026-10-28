@@ -1,0 +1,9 @@
+.next
+node_modules
+coverage
+package-lock.json
+evals/results
+evals/fixtures
+.agents
+# Written by the OpenSpec CLI, which has its own format.
+openspec
